@@ -10,6 +10,8 @@
 		A345FF6A247681C100FF2364 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF69247681C100FF2364 /* GrowingTextView.swift */; };
 		A345FF6D2476846A00FF2364 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF6C2476846A00FF2364 /* Extensions.swift */; };
 		A345FF6F247684A400FF2364 /* TextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF6E247684A400FF2364 /* TextViewWrapper.swift */; };
+		A383B9C52476DA6000EA63A9 /* StarCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A383B9C42476DA5F00EA63A9 /* StarCalculator.mlmodel */; };
+		A383B9C92477292E00EA63A9 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A383B9C82477292E00EA63A9 /* Examples.swift */; };
 		A38AF1942475673F00567A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1932475673F00567A7C /* AppDelegate.swift */; };
 		A38AF1962475673F00567A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1952475673F00567A7C /* SceneDelegate.swift */; };
 		A38AF1982475673F00567A7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1972475673F00567A7C /* ContentView.swift */; };
@@ -18,7 +20,6 @@
 		A38AF1A02475674800567A7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38AF19E2475674800567A7C /* LaunchScreen.storyboard */; };
 		A38AF1AB2475674800567A7C /* Client_Sentiment_AnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1AA2475674800567A7C /* Client_Sentiment_AnalysisTests.swift */; };
 		A38AF1B62475674800567A7C /* Client_Sentiment_AnalysisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1B52475674800567A7C /* Client_Sentiment_AnalysisUITests.swift */; };
-		A3EEBD872476784E00BD261A /* StarCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A3EEBD862476784E00BD261A /* StarCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,9 @@
 		A345FF69247681C100FF2364 /* GrowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
 		A345FF6C2476846A00FF2364 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		A345FF6E247684A400FF2364 /* TextViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWrapper.swift; sourceTree = "<group>"; };
+		A383B9C42476DA5F00EA63A9 /* StarCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StarCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
+		A383B9C62477085C00EA63A9 /* Client-Sentiment-Analysis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Client-Sentiment-Analysis.entitlements"; sourceTree = "<group>"; };
+		A383B9C82477292E00EA63A9 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
 		A38AF1902475673F00567A7C /* Client-Sentiment-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Client-Sentiment-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38AF1932475673F00567A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38AF1952475673F00567A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +60,6 @@
 		A38AF1B12475674800567A7C /* Client-Sentiment-AnalysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Client-Sentiment-AnalysisUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38AF1B52475674800567A7C /* Client_Sentiment_AnalysisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client_Sentiment_AnalysisUITests.swift; sourceTree = "<group>"; };
 		A38AF1B72475674800567A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A3EEBD862476784E00BD261A /* StarCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = StarCalculator.mlmodel; path = ../../StarCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,14 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		A383B9C72477291000EA63A9 /* ExamplesSet */ = {
+			isa = PBXGroup;
+			children = (
+				A383B9C82477292E00EA63A9 /* Examples.swift */,
+			);
+			path = ExamplesSet;
+			sourceTree = "<group>";
+		};
 		A38AF1872475673F00567A7C = {
 			isa = PBXGroup;
 			children = (
@@ -124,9 +135,11 @@
 		A38AF1922475673F00567A7C /* Client-Sentiment-Analysis */ = {
 			isa = PBXGroup;
 			children = (
+				A383B9C72477291000EA63A9 /* ExamplesSet */,
+				A383B9C62477085C00EA63A9 /* Client-Sentiment-Analysis.entitlements */,
 				A345FF6B2476845900FF2364 /* Extensions */,
 				A345FF68247681AB00FF2364 /* GrowinTextView */,
-				A3EEBD862476784E00BD261A /* StarCalculator.mlmodel */,
+				A383B9C42476DA5F00EA63A9 /* StarCalculator.mlmodel */,
 				A38AF1932475673F00567A7C /* AppDelegate.swift */,
 				A38AF1952475673F00567A7C /* SceneDelegate.swift */,
 				A38AF1972475673F00567A7C /* ContentView.swift */,
@@ -295,12 +308,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A383B9C92477292E00EA63A9 /* Examples.swift in Sources */,
 				A38AF1942475673F00567A7C /* AppDelegate.swift in Sources */,
 				A345FF6D2476846A00FF2364 /* Extensions.swift in Sources */,
+				A383B9C52476DA6000EA63A9 /* StarCalculator.mlmodel in Sources */,
 				A38AF1962475673F00567A7C /* SceneDelegate.swift in Sources */,
 				A38AF1982475673F00567A7C /* ContentView.swift in Sources */,
 				A345FF6F247684A400FF2364 /* TextViewWrapper.swift in Sources */,
-				A3EEBD872476784E00BD261A /* StarCalculator.mlmodel in Sources */,
 				A345FF6A247681C100FF2364 /* GrowingTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -466,6 +480,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Client-Sentiment-Analysis/Client-Sentiment-Analysis.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Client-Sentiment-Analysis/Preview Content\"";
 				DEVELOPMENT_TEAM = 3K7BQC5DP9;
@@ -477,6 +492,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "issd.Client-Sentiment-Analysis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -486,6 +502,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Client-Sentiment-Analysis/Client-Sentiment-Analysis.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Client-Sentiment-Analysis/Preview Content\"";
 				DEVELOPMENT_TEAM = 3K7BQC5DP9;
@@ -497,6 +514,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "issd.Client-Sentiment-Analysis";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

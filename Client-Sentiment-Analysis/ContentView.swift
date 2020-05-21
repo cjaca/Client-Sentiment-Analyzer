@@ -14,32 +14,41 @@ struct ContentView: View {
     @State private var star_rating: String?
     @State var messages: [Message] = []
     
+    let user = User(avatar: "👨🏻‍💻", nickname: "@cjaca")
+    
     var body: some View {
         ZStack{
+            
               Color.white
                 .edgesIgnoringSafeArea(.all)
               VStack(spacing: 0) {
-                HStack(alignment: .center) {
-                  GrowingTextInputView(text: $text, star_rating: $star_rating, placeholder: "Message")
-                    .cornerRadius(10)
-                    Button(action: {
-                        
-                        var result = self.calculateStar(text: self.text!)
-                        self.sendAction(star_rating: result)
-                        
-                    }) {
-                    Text("Send")
-                  }
-                }.padding()
-                Divider()
                 ScrollView {
                   VStack(alignment: .trailing, spacing: 16) {
                     ForEach(messages, id: \.id) {
-                        self.messageView(text: $0.text, star_rating: $0.rating)
+                        self.messageView(text: $0.text, star_rating: $0.rating, user: $0.user)
+                        .scaleEffect(x: 1, y: -1, anchor: .center)
+                            .transition(.opacity)
                     }
                   }.padding(.top, 16)
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
                 }.edgesIgnoringSafeArea(.bottom)
+                .scaleEffect(x: 1, y: -1, anchor: .center)
+                
+                Divider()
+                
+                HStack(alignment: .center) {
+                  GrowingTextInputView(text: $text, star_rating: $star_rating, placeholder: "Message")
+                    .cornerRadius(10)
+                    Button(action: {
+                        if self.text != nil {
+                            let result = self.calculateStar(text: self.text!)
+                            self.sendAction(star_rating: result)
+                        }
+                    }) {
+                    Text("Send")
+                  }
+                }.padding()
+
               }
         }
     }
@@ -50,7 +59,6 @@ struct ContentView: View {
         do {
             let prediction = try model.prediction(text: text)
             star_rating = prediction.label
-            print(star_rating)
             return star_rating!
         }catch {
             // something went wrong
@@ -60,34 +68,67 @@ struct ContentView: View {
 
     func sendAction(star_rating: String){
         guard let text = text, !text.isEmpty else {return}
-        let newMessage = Message(text: text, rating: star_rating)
+        let newMessage = Message(text: text, rating: star_rating, user: user)
         messages.insert(newMessage, at: 0)
         self.text = nil
         UIApplication.shared.windows.forEach{ $0.endEditing(true)}
     }
     
-    func messageView(text: String, star_rating: String) -> some View {
+    
+    func stars(text: String) -> some View{
+        let numberOfStars = Int(text)
+        let star = Image(systemName: "star")
+        let star_fill = Image(systemName: "star.fill")
+        return HStack{
+            ForEach(0 ..< 5-numberOfStars!){_ in
+                star
+            }
+            ForEach(0 ..< numberOfStars!){_ in
+                star_fill
+            }
+        }
+    }
+    
+    func messageView(text: String, star_rating: String, user: User) -> some View {
         return VStack{
-            HStack{
+            VStack(alignment: .trailing){
+                HStack{
+                    Text(user.avatar)
+                        .font(.system(.title))
+                    Text(user.nickname)
+                    .font(.system(.headline))
+                }
+
+                
+                
                 Text(text)
-                Text(star_rating)
+                    .font(.system(.subheadline))
+                
+
+                stars(text: star_rating)
+                    .foregroundColor(.yellow)
+                    .font(.system(size: 12))
             }
             .foregroundColor(.white)
             .padding(.all, 12)
-            .background(Color.green)
+            .background(Color.blue)
             .cornerRadius(14)
             .padding(.trailing, 12)
             .padding(.leading, 32)
             
         }
     }
+}
 
 
-    struct Message {
-        let id = UUID()
-        let text: String
-        let rating: String
+extension VerticalAlignment {
+    struct MidAccountAndName: AlignmentID {
+        static func defaultValue(in d: ViewDimensions) -> CGFloat {
+            d[.leading]
+        }
     }
+
+    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
 }
 
 

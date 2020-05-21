@@ -30,6 +30,7 @@ struct TextViewWrapper: UIViewRepresentable {
         textView.font = .systemFont(ofSize: 16)
         textView.backgroundColor = .clear
         textView.autocorrectionType = .no
+        textView.textColor = .black
         return textView
     }
     
