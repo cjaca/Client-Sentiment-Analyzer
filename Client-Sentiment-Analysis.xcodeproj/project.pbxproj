@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A345FF6A247681C100FF2364 /* GrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF69247681C100FF2364 /* GrowingTextView.swift */; };
+		A345FF6D2476846A00FF2364 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF6C2476846A00FF2364 /* Extensions.swift */; };
+		A345FF6F247684A400FF2364 /* TextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF6E247684A400FF2364 /* TextViewWrapper.swift */; };
 		A38AF1942475673F00567A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1932475673F00567A7C /* AppDelegate.swift */; };
 		A38AF1962475673F00567A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1952475673F00567A7C /* SceneDelegate.swift */; };
 		A38AF1982475673F00567A7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1972475673F00567A7C /* ContentView.swift */; };
@@ -15,6 +18,7 @@
 		A38AF1A02475674800567A7C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A38AF19E2475674800567A7C /* LaunchScreen.storyboard */; };
 		A38AF1AB2475674800567A7C /* Client_Sentiment_AnalysisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1AA2475674800567A7C /* Client_Sentiment_AnalysisTests.swift */; };
 		A38AF1B62475674800567A7C /* Client_Sentiment_AnalysisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1B52475674800567A7C /* Client_Sentiment_AnalysisUITests.swift */; };
+		A3EEBD872476784E00BD261A /* StarCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A3EEBD862476784E00BD261A /* StarCalculator.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A345FF69247681C100FF2364 /* GrowingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrowingTextView.swift; sourceTree = "<group>"; };
+		A345FF6C2476846A00FF2364 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		A345FF6E247684A400FF2364 /* TextViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewWrapper.swift; sourceTree = "<group>"; };
 		A38AF1902475673F00567A7C /* Client-Sentiment-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Client-Sentiment-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38AF1932475673F00567A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38AF1952475673F00567A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +56,7 @@
 		A38AF1B12475674800567A7C /* Client-Sentiment-AnalysisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Client-Sentiment-AnalysisUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38AF1B52475674800567A7C /* Client_Sentiment_AnalysisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client_Sentiment_AnalysisUITests.swift; sourceTree = "<group>"; };
 		A38AF1B72475674800567A7C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A3EEBD862476784E00BD261A /* StarCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = StarCalculator.mlmodel; path = ../../StarCalculator.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A345FF68247681AB00FF2364 /* GrowinTextView */ = {
+			isa = PBXGroup;
+			children = (
+				A345FF69247681C100FF2364 /* GrowingTextView.swift */,
+				A345FF6E247684A400FF2364 /* TextViewWrapper.swift */,
+			);
+			name = GrowinTextView;
+			sourceTree = "<group>";
+		};
+		A345FF6B2476845900FF2364 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A345FF6C2476846A00FF2364 /* Extensions.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
 		A38AF1872475673F00567A7C = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +124,9 @@
 		A38AF1922475673F00567A7C /* Client-Sentiment-Analysis */ = {
 			isa = PBXGroup;
 			children = (
+				A345FF6B2476845900FF2364 /* Extensions */,
+				A345FF68247681AB00FF2364 /* GrowinTextView */,
+				A3EEBD862476784E00BD261A /* StarCalculator.mlmodel */,
 				A38AF1932475673F00567A7C /* AppDelegate.swift */,
 				A38AF1952475673F00567A7C /* SceneDelegate.swift */,
 				A38AF1972475673F00567A7C /* ContentView.swift */,
@@ -268,8 +296,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				A38AF1942475673F00567A7C /* AppDelegate.swift in Sources */,
+				A345FF6D2476846A00FF2364 /* Extensions.swift in Sources */,
 				A38AF1962475673F00567A7C /* SceneDelegate.swift in Sources */,
 				A38AF1982475673F00567A7C /* ContentView.swift in Sources */,
+				A345FF6F247684A400FF2364 /* TextViewWrapper.swift in Sources */,
+				A3EEBD872476784E00BD261A /* StarCalculator.mlmodel in Sources */,
+				A345FF6A247681C100FF2364 /* GrowingTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
