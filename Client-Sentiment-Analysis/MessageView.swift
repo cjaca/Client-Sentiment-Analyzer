@@ -11,19 +11,19 @@ import Combine
 
 struct MessageView: View {
         
+    var text: String
+    var star_rating: String
+    var user: User
+    var date = Date() { didSet { dateLabel = update(with: date) } }
+    @State var dateLabel : String = "0s"
+
     
     init(text: String?, star_rating: String?, user: User?){
         self.text = text!
         self.star_rating = star_rating!
         self.user = user!
-        self.timeControl = timerController()
-        self.timeControl.date = Date()
-        self.timeControl.startCount()
     }
-    var text: String
-    var star_rating: String
-    var user: User
-    @ObservedObject var timeControl: timerController
+
     
     var body: some View {
         HStack(alignment: .top){
@@ -37,7 +37,7 @@ struct MessageView: View {
                             Text(user.fullName)
                                 .font(.system(.headline))
                                 .padding(.vertical, 12)
-                            Text(user.nickname+" · "+(timeControl.dateLabel ?? " "))
+                            Text(user.nickname+" · "+dateLabel)
                                 .font(.system(.subheadline))
                                 .foregroundColor(StyleSheet.nickname)
                         }
@@ -45,32 +45,16 @@ struct MessageView: View {
                             .font(.system(.subheadline))
                     }.padding(.trailing, 20)
                     .foregroundColor(.white)
-                }
-    }
-}
-
-class timerController: ObservableObject {
-    let objectWillChange = ObservableObjectPublisher()
-
-    var dateLabel = ""
-
-    private var timer: Timer?
-    
-    var date = Date() { didSet { dateLabel = update(with: date) } }
-    
-    func startCount(){
-        var timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            self.dateLabel = update(with: self.date)
-            self.objectWillChange.send()
-            print(self.dateLabel)
-        }
+        }.onAppear(perform: {
+                    var timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                        self.dateLabel = update(with: self.date)
+                    }
+        })
     }
 }
 
 
 struct MessageView_Previews: PreviewProvider {
-    @State static var dateLabel: String?
-    
     static var previews: some View {
         MessageView(text: "", star_rating: "", user: User(avatar: "", nickname: "", fullName: ""))
     }

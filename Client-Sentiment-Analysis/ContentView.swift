@@ -27,7 +27,6 @@ struct ContentView: View {
                     ForEach(messages, id: \.id) {
                         self.message_view(text: $0.text, star_rating: $0.rating, user: $0.user)
                         .scaleEffect(x: 1, y: -1, anchor: .center)
-                            .transition(.opacity)
                     }
                   }.padding(.bottom, 5)
                   .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
@@ -50,6 +49,26 @@ struct ContentView: View {
                 }.padding()
 
               }
+        }.onAppear(perform: {
+            let _ = self.generateMessage()
+        })
+    }
+    
+    
+    func generateMessage() {
+        
+        var timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+            let characterNumber = Int.random(in: 0 ..< users.count)
+             let messageNumber = Int.random(in: 0 ..< reviews.count)
+             let model = StarCalculator()
+
+             do {
+                 let prediction = try model.prediction(text: reviews[messageNumber])
+                 let newMessage = Message(text: reviews[messageNumber], rating: prediction.label, user: users[characterNumber])
+                self.messages.insert(newMessage, at: 0)
+             } catch{
+                 print(error)
+             }
         }
     }
     
@@ -122,17 +141,6 @@ struct ContentView: View {
 //        }
         return MessageView(text: text, star_rating: star_rating, user: user)
     }
-}
-
-
-extension VerticalAlignment {
-    struct MidAccountAndName: AlignmentID {
-        static func defaultValue(in d: ViewDimensions) -> CGFloat {
-            d[.leading]
-        }
-    }
-
-    static let midAccountAndName = VerticalAlignment(MidAccountAndName.self)
 }
 
 
