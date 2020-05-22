@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var text: String?
     @State private var star_rating: String?
     @State var messages: [Message] = []
-    
+    let model = StarCalculator()
     let user = User(avatar: "👨🏻‍💻", nickname: "@cjaca", fullName: "Jacek Ciuba")
     
     var body: some View {
@@ -21,34 +21,34 @@ struct ContentView: View {
             
             StyleSheet.backgroundColor
                 .edgesIgnoringSafeArea(.all)
-              VStack(spacing: 0) {
+            VStack(spacing: 0) {
                 ScrollView {
-                  VStack(alignment: .leading, spacing: 16) {
-                    ForEach(messages, id: \.id) {
-                        self.message_view(text: $0.text, star_rating: $0.rating, user: $0.user)
-                        .scaleEffect(x: 1, y: -1, anchor: .center)
-                    }
-                  }.padding(.bottom, 5)
-                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                    VStack(alignment: .leading, spacing: 16) {
+                        ForEach(messages, id: \.id) {
+                                MessageView(text: $0.text, star_rating: $0.rating, user: $0.user)
+                                .scaleEffect(x: 1, y: -1, anchor: .center)
+                        }
+                    }.padding(.bottom, 5)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
                 }
                 .scaleEffect(x: 1, y: -1, anchor: .center)
                 
                 Divider()
                 
                 HStack(alignment: .center) {
-                  GrowingTextInputView(text: $text, star_rating: $star_rating, placeholder: "Message")
-                    .cornerRadius(10)
+                    GrowingTextInputView(text: $text, star_rating: $star_rating, placeholder: "Message")
+                        .cornerRadius(10)
                     Button(action: {
                         if self.text != nil {
                             let result = self.calculateStar(text: self.text!)
                             self.sendAction(star_rating: result)
                         }
                     }) {
-                    Text("Send")
-                  }
+                        Text("Send")
+                    }
                 }.padding()
-
-              }
+                
+            }
         }.onAppear(perform: {
             let _ = self.generateMessage()
         })
@@ -56,35 +56,30 @@ struct ContentView: View {
     
     
     func generateMessage() {
-        
-        var timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+        _ = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
             let characterNumber = Int.random(in: 0 ..< users.count)
-             let messageNumber = Int.random(in: 0 ..< reviews.count)
-             let model = StarCalculator()
-
-             do {
-                 let prediction = try model.prediction(text: reviews[messageNumber])
-                 let newMessage = Message(text: reviews[messageNumber], rating: prediction.label, user: users[characterNumber])
+            let messageNumber = Int.random(in: 0 ..< reviews.count)
+            do {
+                let prediction = try self.model.prediction(text: reviews[messageNumber])
+                let newMessage = Message(text: reviews[messageNumber], rating: prediction.label, user: users[characterNumber])
                 self.messages.insert(newMessage, at: 0)
-             } catch{
-                 print(error)
-             }
+            } catch{
+                print(error)
+            }
         }
     }
     
-    
     func calculateStar(text: String) -> String{
-        let model = StarCalculator()
         do {
-            let prediction = try model.prediction(text: text)
+            let prediction = try self.model.prediction(text: text)
             star_rating = prediction.label
             return star_rating!
         }catch {
-            // something went wrong
+            print(error)
         }
         return ""
     }
-
+    
     func sendAction(star_rating: String){
         guard let text = text, !text.isEmpty else {return}
         let newMessage = Message(text: text, rating: star_rating, user: user)
@@ -93,58 +88,10 @@ struct ContentView: View {
         UIApplication.shared.windows.forEach{ $0.endEditing(true)}
     }
     
-    
-    func stars(text: String) -> some View{
-        let numberOfStars = Int(text)
-        let star = Image(systemName: "star")
-        let star_fill = Image(systemName: "star.fill")
-        return HStack{
-            ForEach(0 ..< 5-numberOfStars!){_ in
-                star
-            }
-            ForEach(0 ..< numberOfStars!){_ in
-                star_fill
-            }
-        }
-    }
-    
     func update(with date: Date?) -> String{
         return date.map(formatted) ?? " "
     }
-
-    func message_view(text: String, star_rating: String, user: User) -> some View {
-//        var date = Date() { didSet { dateLabel = update(with: date) } }
-//        var dateLabel : String?
-//        var timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-//            dateLabel = self.update(with: date)
-//            print(dateLabel)
-//        }
-//        return HStack(alignment: .top){
-//            VStack(alignment: .center){
-//                Stars(numberOfStars: Int(star_rating)!, avatar: user.avatar)
-//            }.padding(.leading, 10)
-//                .padding(.top, 10)
-//
-//            VStack(alignment:.leading){
-//                HStack{
-//                    Text(user.fullName)
-//                        .font(.system(.headline))
-//                        .padding(.vertical, 12)
-//                    Text(user.nickname+" · "+dateLabel!)
-//                        .font(.system(.subheadline))
-//                        .foregroundColor(StyleSheet.nickname)
-//                }
-//                Text(text)
-//                    .font(.system(.subheadline))
-//            }.padding(.trailing, 20)
-//            .foregroundColor(.white)
-//        }
-        return MessageView(text: text, star_rating: star_rating, user: user)
-    }
 }
-
-
-
 
 #if DEBUG
 struct ContentView_Previews: PreviewProvider {

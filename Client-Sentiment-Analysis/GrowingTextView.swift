@@ -10,12 +10,6 @@ import SwiftUI
 
 struct GrowingTextInputView: View {
     
-    init(text: Binding<String?>, star_rating: Binding<String?>, placeholder: String?){
-        self._text = text
-        self._star_rating = star_rating
-        self.placeholder = placeholder
-    }
-    
     @Binding var text: String?
     @Binding var star_rating: String?
     @State var focused: Bool = false
@@ -25,6 +19,12 @@ struct GrowingTextInputView: View {
     let minHeight: CGFloat = 30
     let maxHeight: CGFloat = 150
     
+    init(text: Binding<String?>, star_rating: Binding<String?>, placeholder: String?){
+        self._text = text
+        self._star_rating = star_rating
+        self.placeholder = placeholder
+    }
+
     var countedHeight: CGFloat {
         min(max(minHeight, contentHeight), maxHeight)
     }
@@ -43,12 +43,12 @@ struct GrowingTextInputView: View {
         ViewBuilder.buildIf(
             showPlaceholder ?
                 placeholder.map {
-                Text($0)
-                .foregroundColor(.gray)
-                .font(.system(size: 16))
-                .padding(.vertical, 8)
-                .padding(.horizontal, 4)
-            } : nil
+                    Text($0)
+                        .foregroundColor(.gray)
+                        .font(.system(size: 16))
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 4)
+                } : nil
         )
     }
     
@@ -62,7 +62,7 @@ struct GrowingTextInputView: View {
 struct GrowingTextInputView_Previews: PreviewProvider {
     @State static var text: String?
     @State static var star_rating: String?
-
+    
     static var previews: some View {
         GrowingTextInputView(
             text: $text,
