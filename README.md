@@ -36,7 +36,7 @@ The data I used is available at [`Amazon Customer Reviews Dataset`](https://s3.a
 
 Apple `Create ML` project to generate text classifier model.
 
-<p align=center><a href=""><img alt="screenshot" width="60%" src="img/model.PNG"></a></p>
+<p align=center><a href=""><img alt="screenshot" width="60%" src="https://raw.githubusercontent.com/cjaca/Client-Sentiment-Analyzer/master/img/model.png"></a></p>
 
 Model in project has been trained using 12 000 records classified from range 1 - 5, validated with 4 000 records and tested with 4 000 others. At first glance, the model may seem poorly taught, but after a deeper diagnosis, it can be concluded that about 90% of the answers are well classified or classified into an adjacent class. Even a human 💁‍♂️ would have a problem with the correct classification of the review and the person who wrote this review may not have given the number of stars consistent with the opinion. 
 
@@ -45,7 +45,7 @@ To sum up, the model works very well - try it!
 ##### 🔎 Model Checker
 [`checkTraining.playground`](checkTraining.playground)
 
-<p align=center><a href=""><img alt="screenshot" width="40%" src="img/checker.PNG"></a></p>
+<p align=center><a href=""><img alt="screenshot" width="40%" src="https://raw.githubusercontent.com/cjaca/Client-Sentiment-Analyzer/master/img/checker.png"></a></p>
 
 
 A simple playground to check how many % of queries the model has classified correctly and one class more or less.
