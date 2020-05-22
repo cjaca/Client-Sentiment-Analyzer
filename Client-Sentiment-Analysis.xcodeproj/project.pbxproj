@@ -12,6 +12,8 @@
 		A345FF6F247684A400FF2364 /* TextViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A345FF6E247684A400FF2364 /* TextViewWrapper.swift */; };
 		A383B9C52476DA6000EA63A9 /* StarCalculator.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = A383B9C42476DA5F00EA63A9 /* StarCalculator.mlmodel */; };
 		A383B9C92477292E00EA63A9 /* Examples.swift in Sources */ = {isa = PBXBuildFile; fileRef = A383B9C82477292E00EA63A9 /* Examples.swift */; };
+		A383B9CC2477311B00EA63A9 /* Stars.swift in Sources */ = {isa = PBXBuildFile; fileRef = A383B9CB2477311B00EA63A9 /* Stars.swift */; };
+		A383B9CE2477580100EA63A9 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A383B9CD2477580100EA63A9 /* MessageView.swift */; };
 		A38AF1942475673F00567A7C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1932475673F00567A7C /* AppDelegate.swift */; };
 		A38AF1962475673F00567A7C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1952475673F00567A7C /* SceneDelegate.swift */; };
 		A38AF1982475673F00567A7C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A38AF1972475673F00567A7C /* ContentView.swift */; };
@@ -46,6 +48,8 @@
 		A383B9C42476DA5F00EA63A9 /* StarCalculator.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StarCalculator.mlmodel; sourceTree = SOURCE_ROOT; };
 		A383B9C62477085C00EA63A9 /* Client-Sentiment-Analysis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Client-Sentiment-Analysis.entitlements"; sourceTree = "<group>"; };
 		A383B9C82477292E00EA63A9 /* Examples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Examples.swift; sourceTree = "<group>"; };
+		A383B9CB2477311B00EA63A9 /* Stars.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stars.swift; sourceTree = "<group>"; };
+		A383B9CD2477580100EA63A9 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		A38AF1902475673F00567A7C /* Client-Sentiment-Analysis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Client-Sentiment-Analysis.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A38AF1932475673F00567A7C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A38AF1952475673F00567A7C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -112,6 +116,15 @@
 			path = ExamplesSet;
 			sourceTree = "<group>";
 		};
+		A383B9CA2477310A00EA63A9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A383B9CB2477311B00EA63A9 /* Stars.swift */,
+				A383B9CD2477580100EA63A9 /* MessageView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		A38AF1872475673F00567A7C = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +148,7 @@
 		A38AF1922475673F00567A7C /* Client-Sentiment-Analysis */ = {
 			isa = PBXGroup;
 			children = (
+				A383B9CA2477310A00EA63A9 /* View */,
 				A383B9C72477291000EA63A9 /* ExamplesSet */,
 				A383B9C62477085C00EA63A9 /* Client-Sentiment-Analysis.entitlements */,
 				A345FF6B2476845900FF2364 /* Extensions */,
@@ -309,11 +323,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A383B9C92477292E00EA63A9 /* Examples.swift in Sources */,
+				A383B9CC2477311B00EA63A9 /* Stars.swift in Sources */,
 				A38AF1942475673F00567A7C /* AppDelegate.swift in Sources */,
 				A345FF6D2476846A00FF2364 /* Extensions.swift in Sources */,
 				A383B9C52476DA6000EA63A9 /* StarCalculator.mlmodel in Sources */,
 				A38AF1962475673F00567A7C /* SceneDelegate.swift in Sources */,
 				A38AF1982475673F00567A7C /* ContentView.swift in Sources */,
+				A383B9CE2477580100EA63A9 /* MessageView.swift in Sources */,
 				A345FF6F247684A400FF2364 /* TextViewWrapper.swift in Sources */,
 				A345FF6A247681C100FF2364 /* GrowingTextView.swift in Sources */,
 			);

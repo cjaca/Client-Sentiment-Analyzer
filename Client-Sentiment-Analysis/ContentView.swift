@@ -14,24 +14,24 @@ struct ContentView: View {
     @State private var star_rating: String?
     @State var messages: [Message] = []
     
-    let user = User(avatar: "👨🏻‍💻", nickname: "@cjaca")
+    let user = User(avatar: "👨🏻‍💻", nickname: "@cjaca", fullName: "Jacek Ciuba")
     
     var body: some View {
         ZStack{
             
-              Color.white
+            StyleSheet.backgroundColor
                 .edgesIgnoringSafeArea(.all)
               VStack(spacing: 0) {
                 ScrollView {
-                  VStack(alignment: .trailing, spacing: 16) {
+                  VStack(alignment: .leading, spacing: 16) {
                     ForEach(messages, id: \.id) {
-                        self.messageView(text: $0.text, star_rating: $0.rating, user: $0.user)
+                        self.message_view(text: $0.text, star_rating: $0.rating, user: $0.user)
                         .scaleEffect(x: 1, y: -1, anchor: .center)
                             .transition(.opacity)
                     }
-                  }.padding(.top, 16)
-                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
-                }.edgesIgnoringSafeArea(.bottom)
+                  }.padding(.bottom, 5)
+                  .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                }
                 .scaleEffect(x: 1, y: -1, anchor: .center)
                 
                 Divider()
@@ -89,34 +89,38 @@ struct ContentView: View {
         }
     }
     
-    func messageView(text: String, star_rating: String, user: User) -> some View {
-        return VStack{
-            VStack(alignment: .trailing){
-                HStack{
-                    Text(user.avatar)
-                        .font(.system(.title))
-                    Text(user.nickname)
-                    .font(.system(.headline))
-                }
+    func update(with date: Date?) -> String{
+        return date.map(formatted) ?? " "
+    }
 
-                
-                
-                Text(text)
-                    .font(.system(.subheadline))
-                
-
-                stars(text: star_rating)
-                    .foregroundColor(.yellow)
-                    .font(.system(size: 12))
-            }
-            .foregroundColor(.white)
-            .padding(.all, 12)
-            .background(Color.blue)
-            .cornerRadius(14)
-            .padding(.trailing, 12)
-            .padding(.leading, 32)
-            
-        }
+    func message_view(text: String, star_rating: String, user: User) -> some View {
+//        var date = Date() { didSet { dateLabel = update(with: date) } }
+//        var dateLabel : String?
+//        var timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+//            dateLabel = self.update(with: date)
+//            print(dateLabel)
+//        }
+//        return HStack(alignment: .top){
+//            VStack(alignment: .center){
+//                Stars(numberOfStars: Int(star_rating)!, avatar: user.avatar)
+//            }.padding(.leading, 10)
+//                .padding(.top, 10)
+//
+//            VStack(alignment:.leading){
+//                HStack{
+//                    Text(user.fullName)
+//                        .font(.system(.headline))
+//                        .padding(.vertical, 12)
+//                    Text(user.nickname+" · "+dateLabel!)
+//                        .font(.system(.subheadline))
+//                        .foregroundColor(StyleSheet.nickname)
+//                }
+//                Text(text)
+//                    .font(.system(.subheadline))
+//            }.padding(.trailing, 20)
+//            .foregroundColor(.white)
+//        }
+        return MessageView(text: text, star_rating: star_rating, user: user)
     }
 }
 

@@ -19,14 +19,15 @@ struct User {
     let id = UUID()
     let avatar: String
     let nickname: String
+    let fullName: String
 }
 
 
-var users = [User(avatar: "🦄", nickname: "@ExactUnicorn"),
- User(avatar: "🦊", nickname: "@FoxyTimer"),
- User(avatar: "🐸", nickname: "@FroggySpinner"),
- User(avatar: "🐹", nickname: "@MousieHeater"),
- User(avatar: "🦧", nickname: "@BigValve")
+var users = [User(avatar: "🦄", nickname: "@Uni420", fullName: "Uni Clay"),
+             User(avatar: "🦊", nickname: "@wFoxSay", fullName: "Foxy Dug"),
+             User(avatar: "🐸", nickname: "@FrogDriver", fullName: "Fraggy Meh"),
+             User(avatar: "🐹", nickname: "@WirelessMouse", fullName: "Mini Fiz"),
+             User(avatar: "🦧", nickname: "@BigValve", fullName: "Bombo Juzz")
 ]
 
 var reviews = [
